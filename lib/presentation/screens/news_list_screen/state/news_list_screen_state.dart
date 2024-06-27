@@ -92,9 +92,8 @@ class NewsListScreenState extends ChangeNotifier {
   void onSearchChanged({required String textQuery}) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
-      refresh();
       query = textQuery;
-      fetchNewPage();
+      refresh();
     });
   }
 

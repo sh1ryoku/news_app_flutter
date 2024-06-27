@@ -15,29 +15,32 @@ class NewsCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Card(
         color: Colors.grey,
-        child: SizedBox(
-          height: 160,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              if (article.title != null)
+        child: Stack(children: [
+          SizedBox(
+            height: 160,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (article.title != null)
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(article.title!),
+                  ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(article.title!),
-                ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (article.author != null) Text(article.author!),
-                    if (article.publishedAt != null) Text(article.publishedAt!),
-                  ],
-                ),
-              )
-            ],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      if (article.author != null) Text(article.author!),
+                      if (article.publishedAt != null)
+                        Text(article.publishedAt!),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
+        ]),
       ),
     );
   }

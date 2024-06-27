@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:news_app/models/api/article/article_source_data.dart';
 import 'package:news_app/models/entities/article/article.dart';
+import 'package:news_app/helpers/date_parser/date_parser.dart';
+import 'dart:core';
 
 part 'article_data.g.dart';
 
