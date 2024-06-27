@@ -1,7 +1,7 @@
 import 'article.dart';
 
-class ArticlesPage {
-  ArticlesPage({
+class articlesPage {
+  articlesPage({
     required this.articles,
     required this.totalResults,
   });

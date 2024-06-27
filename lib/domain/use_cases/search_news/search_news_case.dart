@@ -1,4 +1,4 @@
-import 'package:news_app/models/entities/article/article.dart';
+import 'package:news_app/models/entities/article/articles_page.dart';
 import 'package:news_app/service/api_service/api_service.dart';
 
 class SearchNewsCase {
@@ -8,7 +8,7 @@ class SearchNewsCase {
 
   final ApiService _apiService;
 
-  Future<List<Article>> run({
+  Future<articlesPage> run({
     required String query,
     required int page,
     required int pageSize,
@@ -21,9 +21,12 @@ class SearchNewsCase {
 
     final searchResult = response.toDomain();
     if (searchResult.status != 'ok') {
-      throw Exception('Search result not eshkere');
+      throw Exception('Search result is not eshkere');
     }
-    final searchResultArticles = searchResult.articles;
-    return searchResultArticles;
+    final searchResultArticlesPage = articlesPage(
+      articles: searchResult.articles,
+      totalResults: searchResult.totalResults,
+    );
+    return searchResultArticlesPage;
   }
 }

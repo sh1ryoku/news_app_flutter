@@ -8,7 +8,7 @@ class SearchHeadlinesCase {
 
   final ApiService _apiService;
 
-  Future<ArticlesPage> run({
+  Future<articlesPage> run({
     required String category,
     required int page,
     required int pageSize,
@@ -24,7 +24,7 @@ class SearchHeadlinesCase {
       throw Exception('Search result is not eshkere');
     }
 
-    final searchResultArticlesPage = ArticlesPage(
+    final searchResultArticlesPage = articlesPage(
       articles: searchResult.articles,
       totalResults: searchResult.totalResults,
     );

@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/presentation/screens/news_list_screen/state/news_list_screen_state.dart';
+import 'package:provider/provider.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
   const AppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-        padding: EdgeInsets.all(16),
+    final state = context.watch<NewsListScreenState>();
+    return Padding(
+        padding: const EdgeInsets.all(16),
           child: TextField(
-            decoration: InputDecoration(
+            controller: context.select<NewsListScreenState, TextEditingController>((state) => state.searchBarController),
+            onChanged: (text) {state.onSearchChanged(textQuery: text);},
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
             ),
           ),
