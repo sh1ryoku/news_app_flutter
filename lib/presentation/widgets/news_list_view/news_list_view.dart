@@ -21,8 +21,10 @@ class NewsListView extends StatelessWidget {
         return NewsCard(article: article);
       },
       fetchMore: context.read<NewsListScreenState>().fetchNewPage,
-      isLastPage: context.select<NewsListScreenState, bool>((state) => state.isLastPage),
-      isLoading: context.select<NewsListScreenState,bool>((state) => state.isLoading),
+      isLastPage: context
+          .select<NewsListScreenState, bool>((state) => state.isLastPage),
+      isLoading:
+          context.select<NewsListScreenState, bool>((state) => state.isLoading),
     );
   }
 }

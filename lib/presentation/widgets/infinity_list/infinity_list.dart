@@ -31,6 +31,7 @@ class InfinityList extends StatelessWidget {
   final Widget Function(BuildContext, int) itemsBuilder;
   final Widget Function(BuildContext, int)? separatorBuilder;
   final Axis scrollDirection;
+
   int get cellsCount => (_itemsCount / cellSize).ceil() + 1;
 
   @override
@@ -65,7 +66,7 @@ class InfinityList extends StatelessWidget {
         return _buildCellLayout(
           children: List.generate(
             itemsInCellCount,
-                (itemInCellIndex) {
+            (itemInCellIndex) {
               return _buildCellItemPadding(
                 itemInCellIndex: itemInCellIndex,
                 child: _buildCellItemSizedBox(
@@ -107,10 +108,10 @@ class InfinityList extends StatelessWidget {
   }
 
   Widget _buildCellItemSizedBox(
-      BuildContext context, {
-        required BoxConstraints constraints,
-        required int itemIndex,
-      }) {
+    BuildContext context, {
+    required BoxConstraints constraints,
+    required int itemIndex,
+  }) {
     final isHeightConstraintsRequired = scrollDirection == Axis.horizontal;
     final isWidthConstraintsRequired = scrollDirection == Axis.vertical;
     return SizedBox(

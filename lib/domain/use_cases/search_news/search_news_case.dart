@@ -8,7 +8,7 @@ class SearchNewsCase {
 
   final ApiService _apiService;
 
-  Future<articlesPage> run({
+  Future<ArticlesPage> run({
     required String query,
     required int page,
     required int pageSize,
@@ -23,7 +23,7 @@ class SearchNewsCase {
     if (searchResult.status != 'ok') {
       throw Exception('Search result is not eshkere');
     }
-    final searchResultArticlesPage = articlesPage(
+    final searchResultArticlesPage = ArticlesPage(
       articles: searchResult.articles,
       totalResults: searchResult.totalResults,
     );
