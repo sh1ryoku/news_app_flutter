@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/entities/article/article.dart';
 
+import '../../../helpers/date_parser/date_parser.dart';
+
+
 class NewsCard extends StatelessWidget {
   const NewsCard({
     super.key,
