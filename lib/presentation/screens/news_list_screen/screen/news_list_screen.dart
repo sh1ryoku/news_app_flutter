@@ -14,9 +14,11 @@ class NewsListScreen extends StatelessWidget {
       create: (context) {
         return GetIt.I.get<NewsListScreenState>();
       },
-      child: const Scaffold(
-        appBar: AppBarWidget(),
-        body: NewsListView(),
+      child: const SafeArea(
+        child: Scaffold(
+          appBar: AppBarWidget(),
+          body: NewsListView(),
+        ),
       ),
     );
   }

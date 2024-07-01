@@ -12,48 +12,35 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String title = article.title ?? '';
-    final String publishedAt = article.publishedAt ?? '';
-    final String author = article.author ?? '';
-    final String content = article.content ?? '';
-    final String imageUrl = article.imageUrl ?? '';
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        clipBehavior: Clip.hardEdge,
         color: Colors.grey,
         child: GestureDetector(
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => NewsDetailPageScreen(
-                title: title,
-                author: author,
-                publishedAt: publishedAt,
-                content: content,
-                imageUrl: imageUrl,
+                article: article
               ),
             ),
           ),
           child: SizedBox(
             height: 170,
             child: Stack(children: [
-              if (imageUrl.isNotEmpty)
-                Positioned.fill(
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+              Positioned.fill(
+                child: buildImage(),
+              ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        title,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      child: buildTitleText(),
                     ),
                   ),
                   Padding(
@@ -62,12 +49,9 @@ class NewsCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
-                          child: Text(
-                            author,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                          child: buildAuthorText(),
                         ),
-                        Text(publishedAt),
+                        buildPublishedAtText(),
                       ],
                     ),
                   )
@@ -77,6 +61,39 @@ class NewsCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildTitleText() {
+    final title = article.title;
+    if (title == null) return const SizedBox.shrink();
+    return Text(
+      title,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget buildAuthorText() {
+    final author = article.author;
+    if (author == null) return const SizedBox.shrink();
+    return Text(
+      author,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget buildPublishedAtText() {
+    final publishedAt = article.publishedAt;
+    if (publishedAt == null) return const SizedBox.shrink();
+    return Text(publishedAt);
+  }
+
+  Widget buildImage() {
+    final imageUrl = article.imageUrl;
+    if (imageUrl == null) return const SizedBox.shrink();
+    return Image.network(
+      imageUrl,
+      fit: BoxFit.cover,
     );
   }
 }
