@@ -4,7 +4,7 @@ class QueryParamInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.queryParameters.addAll({
-      'apiKey': '55e63be7abab4ef58b07203885bed89d',
+      'apiKey': 'd9de84bd46074e99afb1a0303b1e90b1',
     });
     super.onRequest(options, handler);
   }

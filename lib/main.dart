@@ -5,6 +5,7 @@ import 'package:news_app/presentation/screens/news_list_screen/screen/news_list_
 void main() {
   setup();
   runApp(const App());
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class App extends StatelessWidget {

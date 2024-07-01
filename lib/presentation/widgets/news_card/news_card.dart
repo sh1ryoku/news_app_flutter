@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/entities/article/article.dart';
-
-import '../../../helpers/date_parser/date_parser.dart';
-
+import 'package:news_app/presentation/screens/news_detail_page_screen/screen/news_detail_page_screen.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard({
@@ -14,36 +12,60 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String title = article.title ?? '';
+    final String publishedAt = article.publishedAt ?? '';
+    final String author = article.author ?? '';
+    final String content = article.content ?? '';
+    final String imageUrl = article.imageUrl ?? '';
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
         color: Colors.grey,
-        child: Stack(children: [
-          SizedBox(
-            height: 160,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (article.title != null)
+        child: GestureDetector(
+          onTap: (() => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => NewsDetailPageScreen(
+                        title: title,
+                        author: author,
+                        publishedAt: publishedAt,
+                        content: content,
+                        imageUrl: imageUrl,
+                      )))),
+          child: SizedBox(
+            height: 170,
+            child: Stack(children: [
+              if (imageUrl.isNotEmpty)
+                Positioned.fill(
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text(article.title!),
+                    child: Text(title),
                   ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      if (article.author != null) Text(article.author!),
-                      if (article.publishedAt != null)
-                        Text(article.publishedAt!),
-                    ],
-                  ),
-                )
-              ],
-            ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          author,
+                        ),
+                        Text(publishedAt),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ]),
           ),
-        ]),
+        ),
       ),
     );
   }
