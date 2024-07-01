@@ -22,8 +22,15 @@ class DetailPageNewsCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(publishedAt),
-            Text(title),
-            Text(author),
+            Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              author,
+              maxLines: 1,
+            ),
           ],
         ),
       ),

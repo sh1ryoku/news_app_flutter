@@ -47,15 +47,23 @@ class NewsCard extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text(title),
+                    child: Expanded(
+                      child: Text(
+                        title,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          author,
+                        Expanded(
+                          child: Text(
+                            author,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                         Text(publishedAt),
                       ],
