@@ -18,20 +18,23 @@ class DetailPageNewsCard extends StatelessWidget {
       child: SizedBox(
         height: 100,
         width: 300,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(publishedAt),
-            Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Text(
-              author,
-              maxLines: 1,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(publishedAt),
+              Text(
+                title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              Text(
+                author,
+                maxLines: 1,
+              ),
+            ],
+          ),
         ),
       ),
     );

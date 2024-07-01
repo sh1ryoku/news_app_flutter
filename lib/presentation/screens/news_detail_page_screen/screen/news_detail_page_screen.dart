@@ -31,8 +31,11 @@ class NewsDetailPageScreen extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Center(
-                  child: Text(content),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text(content),
+                  ),
                 ),
               )
             ],

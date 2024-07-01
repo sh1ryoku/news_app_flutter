@@ -22,16 +22,18 @@ class NewsCard extends StatelessWidget {
       child: Card(
         color: Colors.grey,
         child: GestureDetector(
-          onTap: (() => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => NewsDetailPageScreen(
-                        title: title,
-                        author: author,
-                        publishedAt: publishedAt,
-                        content: content,
-                        imageUrl: imageUrl,
-                      )))),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NewsDetailPageScreen(
+                title: title,
+                author: author,
+                publishedAt: publishedAt,
+                content: content,
+                imageUrl: imageUrl,
+              ),
+            ),
+          ),
           child: SizedBox(
             height: 170,
             child: Stack(children: [
@@ -45,9 +47,9 @@ class NewsCard extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Expanded(
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
                       child: Text(
                         title,
                         overflow: TextOverflow.ellipsis,

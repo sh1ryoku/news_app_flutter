@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 class DateParser {
   final format = DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'", 'en_US');
-  final newFormat = DateFormat('M/d/y, hh:mm:ss');
+  final newFormat = DateFormat('EEEE, d MMMM y');
   late String newDate;
   late DateTime parsedDate;
 
