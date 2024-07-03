@@ -9,15 +9,17 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final state = context.watch<NewsListScreenState>();
     return Padding(
-      padding: const EdgeInsets.all(6),
+      padding: const EdgeInsets.all(8),
       child: TextField(
         controller: context.select<NewsListScreenState, TextEditingController>(
-            (state) => state.searchBarController),
+          (state) => state.searchBarController,
+        ),
         onChanged: (text) {
           state.onSearchChanged(textQuery: text);
         },
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
+        decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.search),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
         ),
       ),
     );

@@ -14,10 +14,13 @@ class NewsListScreen extends StatelessWidget {
       create: (context) {
         return GetIt.I.get<NewsListScreenState>();
       },
-      child: const SafeArea(
-        child: Scaffold(
-          appBar: AppBarWidget(),
-          body: NewsListView(),
+      child: SafeArea(
+        child: GestureDetector(
+          onPanCancel: FocusScope.of(context).unfocus,
+          child: const Scaffold(
+            appBar: AppBarWidget(),
+            body: NewsListView(),
+          ),
         ),
       ),
     );
